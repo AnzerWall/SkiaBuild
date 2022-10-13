@@ -4,12 +4,14 @@ import common, os, subprocess, sys
 
 def main():
   os.chdir(os.path.join(os.path.dirname(__file__), os.pardir, 'skia'))
-  ssdir= os.path.join(os.path.dirname(__file__), os.pardir, 'swiftshader')
-
+  ssldir= os.path.join(os.path.dirname(__file__), os.pardir, 'swiftshader')
+  ssidir= os.path.join(os.path.dirname(__file__), os.pardir, 'skia', 'third_party', 'externals', 'swiftshader', 'include')
+  print(ssldir)
+  print(ssidir)
   build_type = common.build_type()
   machine = common.machine()
   system = common.system()
-  ndk = common.ndk()  
+  ndk = common.ndk()
 
   if build_type == 'Debug':
     args = ['is_debug=true']
@@ -56,8 +58,8 @@ def main():
       # 'skia_use_gl=true',
       'extra_cflags_cc=["-frtti"]',
       'cxx="g++-9"',
-      'extra_cflags=["-I/tmp/swiftshader/include", "-I/usr/include", "-DGR_EGL_TRY_GLES3_THEN_GLES2", "-g0"]',
-      'extra_ldflags=["-L'+ssdir+'", "-Wl,-rpath", "-Wl,'+ssdir+'"]'
+      'extra_cflags=["-I'+ssidir+'", "-I/usr/include", "-DGR_EGL_TRY_GLES3_THEN_GLES2", "-g0"]',
+      'extra_ldflags=["-L'+ssldir+'", "-Wl,-rpath", "-Wl,'+ssldir+'"]'
     ]
   elif 'windows' == system:
     args += [

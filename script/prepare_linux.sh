@@ -13,4 +13,4 @@ update-alternatives --config gcc
 
 apt-get install git python wget -y
 apt-get install ninja-build fontconfig libfontconfig1-dev libfontconfig-dev libglu1-mesa-dev libgl1-mesa-dev libvulkan-dev curl zip -y
-cd /tmp && git clone https://swiftshader.googlesource.com/SwiftShader swiftshader
+#cd /tmp && git clone https://swiftshader.googlesource.com/SwiftShader swiftshader
