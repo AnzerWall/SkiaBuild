@@ -6,6 +6,8 @@ def main():
   os.chdir(os.path.join(os.path.dirname(__file__), os.pardir, 'skia'))
   ssldir= os.path.join(os.path.dirname(__file__), os.pardir, 'swiftshader')
   ssidir= os.path.join(os.path.dirname(__file__), os.pardir, 'skia', 'third_party', 'externals', 'swiftshader', 'include')
+  angleidir= os.path.join(os.path.dirname(__file__), os.pardir, 'angle2')
+
   print(ssldir)
   print(ssidir)
   build_type = common.build_type()
@@ -58,7 +60,7 @@ def main():
       # 'skia_use_gl=true',
       'extra_cflags_cc=["-frtti"]',
       'cxx="g++-9"',
-      'extra_cflags=["-I'+ssidir+'", "-I/usr/include", "-DGR_EGL_TRY_GLES3_THEN_GLES2", "-g0"]',
+      'extra_cflags=["-I'+ssidir+'", "-I'+angleidir+'","-I/usr/include", "-DGR_EGL_TRY_GLES3_THEN_GLES2", "-g0"]',
       'extra_ldflags=["-L'+ssldir+'", "-Wl,-rpath", "-Wl,'+ssldir+'"]'
     ]
   elif 'windows' == system:
