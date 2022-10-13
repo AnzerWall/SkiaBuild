@@ -57,7 +57,7 @@ def main():
       'extra_cflags_cc=["-frtti"]',
       'cxx="g++-9"',
       'extra_cflags=["-I/tmp/swiftshader/include", "-DGR_EGL_TRY_GLES3_THEN_GLES2", "-g0"]',
-      'extra_ldflags=["-L'+swiftshader+'", "-Wl,-rpath", "-Wl,'+swiftshader+'"]'
+      'extra_ldflags=["-L'+ssdir+'", "-Wl,-rpath", "-Wl,'+ssdir+'"]'
     ]
   elif 'windows' == system:
     args += [
