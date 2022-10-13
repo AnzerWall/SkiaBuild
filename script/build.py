@@ -34,9 +34,7 @@ def main():
     'skia_use_system_icu=false',
     # 'skia_enable_skshaper=true',
     # 'skia_enable_svg=true',
-    'skia_enable_skottie=true',
-    'skia_use_vulkan=true',
-    'skia_use_egl=true'
+    'skia_enable_skottie=true'
   ]
 
   if 'macos' == system:
@@ -53,6 +51,8 @@ def main():
       args += ['extra_cflags=["-stdlib=libc++", "-mmacosx-version-min=10.13"]']
   elif 'linux' == system:
     args += [
+      'skia_use_vulkan=true',
+      'skia_use_egl=true'
       'skia_use_system_freetype2=true',
       # 'skia_enable_gpu=true',
       # 'skia_use_gl=true',
