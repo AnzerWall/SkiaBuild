@@ -56,7 +56,7 @@ def main():
       # 'skia_use_gl=true',
       'extra_cflags_cc=["-frtti"]',
       'cxx="g++-9"',
-      'extra_cflags=["-I/tmp/swiftshader/include", "-DGR_EGL_TRY_GLES3_THEN_GLES2", "-g0"]',
+      'extra_cflags=["-I/tmp/swiftshader/include", "-I/usr/include", "-DGR_EGL_TRY_GLES3_THEN_GLES2", "-g0"]',
       'extra_ldflags=["-L'+ssdir+'", "-Wl,-rpath", "-Wl,'+ssdir+'"]'
     ]
   elif 'windows' == system:
