@@ -4,6 +4,7 @@ import common, os, subprocess, sys
 
 def main():
   os.chdir(os.path.join(os.path.dirname(__file__), os.pardir, 'skia'))
+  ssdir= os.path.join(os.path.dirname(__file__), os.pardir, 'swiftshader')
 
   build_type = common.build_type()
   machine = common.machine()
@@ -55,6 +56,8 @@ def main():
       # 'skia_use_gl=true',
       'extra_cflags_cc=["-frtti"]',
       'cxx="g++-9"',
+      'extra_cflags=["-I/tmp/swiftshader/include", "-DGR_EGL_TRY_GLES3_THEN_GLES2", "-g0"]',
+      'extra_ldflags=["-L'+swiftshader+'", "-Wl,-rpath", "-Wl,'+swiftshader+'"]'
     ]
   elif 'windows' == system:
     args += [
