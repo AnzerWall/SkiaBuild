@@ -4,9 +4,9 @@ import common, os, subprocess, sys
 
 def main():
   os.chdir(os.path.join(os.path.dirname(__file__), os.pardir, 'skia'))
-  ssldir= os.path.join(os.path.dirname(__file__), os.pardir, 'swiftshader')
-  ssidir= os.path.join(os.path.dirname(__file__), os.pardir, 'skia', 'third_party', 'externals', 'swiftshader', 'include')
-  angleidir= os.path.join(os.path.dirname(__file__), os.pardir, 'angle2')
+  ssldir= os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir, 'swiftshader'))
+  ssidir= os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir, 'skia', 'third_party', 'externals', 'swiftshader', 'include'))
+  angleidir= os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir, 'angle2'))
 
   print(ssldir)
   print(ssidir)
