@@ -54,13 +54,13 @@ def main():
   elif 'linux' == system:
     args += [
       'skia_use_vulkan=true',
-      'skia_use_egl=true'
+      'skia_use_egl=true',
       'skia_use_system_freetype2=true',
       # 'skia_enable_gpu=true',
       # 'skia_use_gl=true',
       'extra_cflags_cc=["-frtti"]',
       'cxx="g++-9"',
-      'extra_cflags=["-I'+ssidir+'", "-I'+angleidir+'","-I/usr/include", "-DGR_EGL_TRY_GLES3_THEN_GLES2", "-g0"]',
+      'extra_cflags=["-I'+ssidir+'", "-I'+angleidir+'", "-I/usr/include", "-DGR_EGL_TRY_GLES3_THEN_GLES2", "-g0"]',
       'extra_ldflags=["-L'+ssldir+'", "-Wl,-rpath", "-Wl,'+ssldir+'"]'
     ]
   elif 'windows' == system:
