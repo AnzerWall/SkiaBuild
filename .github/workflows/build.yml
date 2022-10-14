@@ -67,7 +67,7 @@ jobs:
         if: ${{ github.event.inputs.skip_release != 'true' }}
         with:
           artifacts: '*.zip'
-          token: ${{ secrets.API_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ env.version }}
 #      - run: python3 script/release.py --version ${{ env.version }} --build-type ${{ matrix.build_type }}
 #        if: ${{ github.event.inputs.skip_release != 'true' }}
