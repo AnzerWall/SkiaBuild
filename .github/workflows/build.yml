@@ -65,7 +65,7 @@ jobs:
           path: '*.zip'
       - uses: ncipollo/release-action@v1
         if: ${{ github.event.inputs.skip_release != 'true' }}
-        env:
+        with:
           artifacts: '*.zip'
           token: ${{ secrets.API_TOKEN }}
           tag: ${{ env.version }}
