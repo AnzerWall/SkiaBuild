@@ -63,10 +63,15 @@ jobs:
         with:
           name: Skia-${{ env.version }}-linux-${{ matrix.build_type }}-x64.zip
           path: '*.zip'
-      - run: python3 script/release.py --version ${{ env.version }} --build-type ${{ matrix.build_type }}
+      - uses: ncipollo/release-action@v1
         if: ${{ github.event.inputs.skip_release != 'true' }}
         env:
-          API_TOKEN: ${{ secrets.API_TOKEN }}
+          artifacts: '*.zip'
+          token: ${{ secrets.API_TOKEN }}
+#      - run: python3 script/release.py --version ${{ env.version }} --build-type ${{ matrix.build_type }}
+#        if: ${{ github.event.inputs.skip_release != 'true' }}
+#        env:
+#          API_TOKEN: ${{ secrets.API_TOKEN }}
 
 #  android:
 #    runs-on: ubuntu-18.04
