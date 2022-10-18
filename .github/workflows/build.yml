@@ -37,13 +37,16 @@ jobs:
         with:
           name: Skia-${{ env.version }}-macos-${{ matrix.build_type }}-${{ matrix.machine }}.zip
           path: '*.zip'
-      - run: python3 script/release.py --version ${{ env.version }} --build-type ${{ matrix.build_type }} --machine ${{ matrix.machine }}
+      - uses: ncipollo/release-action@v1
         if: ${{ github.event.inputs.skip_release != 'true' }}
-        env:
-          API_TOKEN: ${{ secrets.API_TOKEN }}
+        with:
+          artifacts: '*.zip'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ env.version }}
+          allowUpdates: true
 
   linux:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     strategy:
       matrix:
         build_type: [Release, Debug]
@@ -62,13 +65,16 @@ jobs:
         with:
           name: Skia-${{ env.version }}-linux-${{ matrix.build_type }}-x64.zip
           path: '*.zip'
-      - run: python3 script/release.py --version ${{ env.version }} --build-type ${{ matrix.build_type }}
+      - uses: ncipollo/release-action@v1
         if: ${{ github.event.inputs.skip_release != 'true' }}
-        env:
-          API_TOKEN: ${{ secrets.API_TOKEN }}
+        with:
+          artifacts: '*.zip'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ env.version }}
+          allowUpdates: true
 
   android:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     strategy:
       matrix:
         machine: [arm, arm64, x64, x86]
@@ -89,10 +95,13 @@ jobs:
         with:
           name: Skia-${{ env.version }}-android-Release-${{ matrix.machine }}.zip
           path: '*.zip'
-      - run: python3 script/release.py --system android --machine ${{ matrix.machine }}
+      - uses: ncipollo/release-action@v1
         if: ${{ github.event.inputs.skip_release != 'true' }}
-        env:
-          API_TOKEN: ${{ secrets.API_TOKEN }}
+        with:
+          artifacts: '*.zip'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ env.version }}
+          allowUpdates: true
 
   windows:
     runs-on: windows-2019
@@ -119,8 +128,10 @@ jobs:
         with:
           name: Skia-${{ env.version }}-windows-${{ matrix.build_type }}-x64.zip
           path: '*.zip'
-      - shell: bash
-        run: python3 script/release.py --version ${{ env.version }} --build-type ${{ matrix.build_type }}
+      - uses: ncipollo/release-action@v1
         if: ${{ github.event.inputs.skip_release != 'true' }}
-        env:
-          API_TOKEN: ${{ secrets.API_TOKEN }}
+        with:
+          artifacts: '*.zip'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ env.version }}
+          allowUpdates: true

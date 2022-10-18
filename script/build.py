@@ -8,7 +8,7 @@ def main():
   build_type = common.build_type()
   machine = common.machine()
   system = common.system()
-  ndk = common.ndk()  
+  ndk = common.ndk()
 
   if build_type == 'Debug':
     args = ['is_debug=true']
@@ -52,7 +52,9 @@ def main():
       # 'skia_enable_gpu=true',
       # 'skia_use_gl=true',
       'extra_cflags_cc=["-frtti"]',
-      'cxx="g++-9"',
+      # 'cxx="g++-9"',
+      'cc="clang-10"',
+      'cxx="clang++-10"'
     ]
   elif 'windows' == system:
     args += [
